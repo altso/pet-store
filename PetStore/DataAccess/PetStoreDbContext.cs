@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PetStore.Core;
 
-namespace PetStore.Core
+namespace PetStore.DataAccess
 {
     public class PetStoreDbContext : DbContext
     {
@@ -13,10 +14,7 @@ namespace PetStore.Core
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Pet>()
-                .HasDiscriminator(p => p.PetType)
-                .HasValue<Cat>(nameof(Cat))
-                .HasValue<Dog>(nameof(Dog));
+            modelBuilder.ApplyConfiguration(new PetConfiguration());
         }
     }
 }

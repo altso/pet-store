@@ -2,6 +2,6 @@
 {
     public class Dog : Pet
     {
-        public int PackSize { get; set; }
+        public int? PackSize { get; set; }
     }
 }
