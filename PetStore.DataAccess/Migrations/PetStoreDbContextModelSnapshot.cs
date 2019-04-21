@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PetStore.Core;
 using PetStore.DataAccess;
 
-namespace PetStore.Migrations
+namespace PetStore.DataAccess.Migrations
 {
     [DbContext(typeof(PetStoreDbContext))]
     partial class PetStoreDbContextModelSnapshot : ModelSnapshot
