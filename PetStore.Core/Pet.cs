@@ -1,8 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.Rest.Serialization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace PetStore.Core
 {
@@ -12,11 +8,8 @@ namespace PetStore.Core
 
         public string Name { get; set; }
 
-        [JsonConverter(typeof(StringEnumConverter))]
         public PetStatus Status { get; set; }
 
-        [DataType(DataType.Date)]
-        [JsonConverter(typeof(DateJsonConverter))]
         public DateTime DateOfBirth { get; set; }
 
         public DateTime RegistrationTimestamp { get; set; }

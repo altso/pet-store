@@ -1,5 +1,6 @@
 using System.IO;
 using System.Reflection;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +31,8 @@ namespace PetStore.CodeFirst
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddAutoMapper();
 
             services.AddSwaggerGen(c =>
             {

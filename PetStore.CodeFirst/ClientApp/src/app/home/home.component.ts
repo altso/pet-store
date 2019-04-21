@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PetService } from 'src/api/generated/services';
-import { Pet } from 'src/api/generated/models';
+import { PetViewModel } from 'src/api/generated/models';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -9,9 +9,9 @@ import { Observable } from 'rxjs';
 })
 export class HomeComponent {
 
-  constructor(private petService: PetService) {
+  constructor(petService: PetService) {
     this.pets$ = petService.GetPets();
   }
 
-  public pets$: Observable<Pet[]>;
+  public pets$: Observable<PetViewModel[]>;
 }

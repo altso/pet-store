@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using PetStore.CodeFirst.Models;
 using PetStore.Core;
 using PetStore.DataAccess;
 
@@ -11,20 +13,23 @@ namespace PetStore.CodeFirst.Controllers
     public class PetController : ControllerBase
     {
         private readonly IPetRepository _petRepository;
+        private readonly IMapper _mapper;
 
-        public PetController(IPetRepository petRepository)
+        public PetController(IPetRepository petRepository, IMapper mapper)
         {
             _petRepository = petRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Pet>>> GetPets()
+        public async Task<ActionResult<IEnumerable<PetViewModel>>> GetPets()
         {
-            return await _petRepository.GetPets();
+            var pets = await _petRepository.GetPets();
+            return _mapper.Map<List<PetViewModel>>(pets);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Pet>> GetPet(int id)
+        public async Task<ActionResult<PetViewModel>> GetPet(int id)
         {
             Pet pet = await _petRepository.GetPet(id);
 
@@ -33,20 +38,20 @@ namespace PetStore.CodeFirst.Controllers
                 return NotFound();
             }
 
-            return pet;
+            return _mapper.Map<PetViewModel>(pet);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Pet>> PutPet(int id, Pet pet)
+        public async Task<ActionResult<PetViewModel>> PutPet(int id, PetViewModel pet)
         {
             if (id != pet.Id)
             {
                 return BadRequest();
             }
 
-            pet = await _petRepository.UpdatePet(pet);
+            Pet updatedPet = await _petRepository.UpdatePet(_mapper.Map<Pet>(pet));
 
-            if (pet == null)
+            if (updatedPet == null)
             {
                 return NotFound();
             }
@@ -55,14 +60,14 @@ namespace PetStore.CodeFirst.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Pet>> PostPet(Pet pet)
+        public async Task<ActionResult<PetViewModel>> PostPet(PetViewModel pet)
         {
-            await _petRepository.CreatePet(pet);
+            await _petRepository.CreatePet(_mapper.Map<Pet>(pet));
             return CreatedAtAction("GetPet", new { id = pet.Id }, pet);
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Pet>> DeletePet(int id)
+        public async Task<ActionResult<PetViewModel>> DeletePet(int id)
         {
             Pet pet = await _petRepository.DeletePet(id);
             if (pet == null)
@@ -70,7 +75,7 @@ namespace PetStore.CodeFirst.Controllers
                 return NotFound();
             }
 
-            return pet;
+            return _mapper.Map<PetViewModel>(pet);
         }
     }
 }
