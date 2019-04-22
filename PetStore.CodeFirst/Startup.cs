@@ -7,8 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Rest.Serialization;
+using PetStore.CodeFirst.Models;
 using PetStore.DataAccess;
 using Swashbuckle.AspNetCore.Swagger;
+
+[assembly: ApiConventionType(typeof(DefaultApiConventions))]
 
 namespace PetStore.CodeFirst
 {
@@ -24,7 +28,12 @@ namespace PetStore.CodeFirst
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddJsonOptions(options =>
+                {
+                    options.SerializerSettings.Converters.Add(
+                        new PolymorphicDeserializeJsonConverter<PetViewModel>("petType"));
+                });
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -32,7 +41,7 @@ namespace PetStore.CodeFirst
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            services.AddAutoMapper();
+            services.AddAutoMapper(config => config.CreateMissingTypeMaps = false);
 
             services.AddSwaggerGen(c =>
             {

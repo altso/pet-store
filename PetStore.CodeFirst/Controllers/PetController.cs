@@ -62,8 +62,8 @@ namespace PetStore.CodeFirst.Controllers
         [HttpPost]
         public async Task<ActionResult<PetViewModel>> PostPet(PetViewModel pet)
         {
-            await _petRepository.CreatePet(_mapper.Map<Pet>(pet));
-            return CreatedAtAction("GetPet", new { id = pet.Id }, pet);
+            Pet createdPet = await _petRepository.CreatePet(_mapper.Map<Pet>(pet));
+            return CreatedAtAction("GetPet", new { id = pet.Id }, _mapper.Map<PetViewModel>(createdPet));
         }
 
         [HttpDelete("{id}")]
