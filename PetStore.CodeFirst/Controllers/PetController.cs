@@ -8,6 +8,10 @@ using PetStore.DataAccess;
 
 namespace PetStore.CodeFirst.Controllers
 {
+    /// <summary>
+    /// Pet controller.
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
     [Route("api/[controller]")]
     [ApiController]
     public class PetController : ControllerBase
@@ -21,6 +25,8 @@ namespace PetStore.CodeFirst.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>Gets the pets.</summary>
+        /// <returns>A list of pets.</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PetViewModel>>> GetPets()
         {
@@ -28,6 +34,9 @@ namespace PetStore.CodeFirst.Controllers
             return _mapper.Map<List<PetViewModel>>(pets);
         }
 
+        /// <summary>Gets the pet.</summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>The pet.</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<PetViewModel>> GetPet(int id)
         {
@@ -41,6 +50,12 @@ namespace PetStore.CodeFirst.Controllers
             return _mapper.Map<PetViewModel>(pet);
         }
 
+        /// <summary>
+        /// Puts the pet.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="pet">The pet.</param>
+        /// <returns>The pet.</returns>
         [HttpPut("{id}")]
         public async Task<ActionResult<PetViewModel>> PutPet(int id, PetViewModel pet)
         {
@@ -59,6 +74,11 @@ namespace PetStore.CodeFirst.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// Posts the pet.
+        /// </summary>
+        /// <param name="pet">The pet.</param>
+        /// <returns>The pet.</returns>
         [HttpPost]
         public async Task<ActionResult<PetViewModel>> PostPet(PetViewModel pet)
         {
@@ -66,6 +86,11 @@ namespace PetStore.CodeFirst.Controllers
             return CreatedAtAction("GetPet", new { id = pet.Id }, _mapper.Map<PetViewModel>(createdPet));
         }
 
+        /// <summary>
+        /// Deletes the pet.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>The pet.</returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<PetViewModel>> DeletePet(int id)
         {

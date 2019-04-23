@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.202
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetStore", "PetStore\PetStore.csproj", "{6A1BF199-A3A1-4982-AA99-8B43F182C603}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetStore.Core", "PetStore.Core\PetStore.Core.csproj", "{5F096096-3F72-416D-9917-4A6F45EE3D04}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetStore.DataAccess", "PetStore.DataAccess\PetStore.DataAccess.csproj", "{0BCCD0FD-8D25-4637-B349-7850F7B1BB82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetStore.CodeFirst", "PetStore.CodeFirst\PetStore.CodeFirst.csproj", "{CA701508-0F79-4E30-80E6-D52DA1B21EDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetStore.CodeFirst", "PetStore.CodeFirst\PetStore.CodeFirst.csproj", "{CA701508-0F79-4E30-80E6-D52DA1B21EDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +19,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6A1BF199-A3A1-4982-AA99-8B43F182C603}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6A1BF199-A3A1-4982-AA99-8B43F182C603}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6A1BF199-A3A1-4982-AA99-8B43F182C603}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{6A1BF199-A3A1-4982-AA99-8B43F182C603}.Debug|x64.Build.0 = Debug|Any CPU
-		{6A1BF199-A3A1-4982-AA99-8B43F182C603}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{6A1BF199-A3A1-4982-AA99-8B43F182C603}.Debug|x86.Build.0 = Debug|Any CPU
-		{6A1BF199-A3A1-4982-AA99-8B43F182C603}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6A1BF199-A3A1-4982-AA99-8B43F182C603}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6A1BF199-A3A1-4982-AA99-8B43F182C603}.Release|x64.ActiveCfg = Release|Any CPU
-		{6A1BF199-A3A1-4982-AA99-8B43F182C603}.Release|x64.Build.0 = Release|Any CPU
-		{6A1BF199-A3A1-4982-AA99-8B43F182C603}.Release|x86.ActiveCfg = Release|Any CPU
-		{6A1BF199-A3A1-4982-AA99-8B43F182C603}.Release|x86.Build.0 = Release|Any CPU
 		{5F096096-3F72-416D-9917-4A6F45EE3D04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5F096096-3F72-416D-9917-4A6F45EE3D04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F096096-3F72-416D-9917-4A6F45EE3D04}.Debug|x64.ActiveCfg = Debug|Any CPU

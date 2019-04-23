@@ -2,7 +2,6 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.Rest.Serialization;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using PetStore.Core;
 
 namespace PetStore.CodeFirst.Models
@@ -14,7 +13,6 @@ namespace PetStore.CodeFirst.Models
         [Required]
         public string Name { get; set; }
 
-        [JsonConverter(typeof(StringEnumConverter))]
         public PetStatus Status { get; set; }
 
         [DataType(DataType.Date)]

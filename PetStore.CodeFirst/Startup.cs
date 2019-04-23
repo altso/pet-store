@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Rest.Serialization;
+using Newtonsoft.Json.Converters;
 using PetStore.CodeFirst.Models;
 using PetStore.DataAccess;
 using Swashbuckle.AspNetCore.Swagger;
@@ -31,6 +32,8 @@ namespace PetStore.CodeFirst
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(options =>
                 {
+                    options.SerializerSettings.Converters.Add(
+                        new StringEnumConverter());
                     options.SerializerSettings.Converters.Add(
                         new PolymorphicDeserializeJsonConverter<PetViewModel>("petType"));
                 });
