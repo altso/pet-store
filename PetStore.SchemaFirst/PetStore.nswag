@@ -1,0 +1,69 @@
+﻿{
+  "runtime": "NetCore22",
+  "defaultVariables": null,
+  "swaggerGenerator": {
+    "fromSwagger": {
+      "url": "Schema/schema.yaml",
+      "output": null
+    }
+  },
+  "codeGenerators": {
+    "swaggerToCSharpController": {
+      "controllerBaseClass": "Microsoft.AspNetCore.Mvc.ControllerBase",
+      "controllerStyle": "Abstract",
+      "controllerTarget": "AspNetCore",
+      "useCancellationToken": true,
+      "useActionResultType": true,
+      "generateModelValidationAttributes": true,
+      "routeNamingStrategy": "OperationId",
+      "className": "Pet{controller}",
+      "operationGenerationMode": "MultipleClientsFromOperationId",
+      "additionalNamespaceUsages": [],
+      "additionalContractNamespaceUsages": [],
+      "generateOptionalParameters": false,
+      "generateJsonMethods": false,
+      "enforceFlagEnums": false,
+      "parameterArrayType": "System.Collections.Generic.IEnumerable",
+      "parameterDictionaryType": "System.Collections.Generic.IDictionary",
+      "responseArrayType": "System.Collections.Generic.ICollection",
+      "responseDictionaryType": "System.Collections.Generic.IDictionary",
+      "wrapResponses": false,
+      "wrapResponseMethods": [],
+      "generateResponseClasses": true,
+      "responseClass": "SwaggerResponse",
+      "namespace": "PetStore.SchemaFirst.Generated",
+      "requiredPropertiesMustBeDefined": true,
+      "dateType": "System.DateTimeOffset",
+      "jsonConverters": null,
+      "dateTimeType": "System.DateTimeOffset",
+      "timeType": "System.TimeSpan",
+      "timeSpanType": "System.TimeSpan",
+      "arrayType": "System.Collections.Generic.List",
+      "arrayInstanceType": "System.Collections.ObjectModel.Collection",
+      "dictionaryType": "System.Collections.Generic.IDictionary",
+      "dictionaryInstanceType": "System.Collections.Generic.Dictionary",
+      "arrayBaseType": "System.Collections.ObjectModel.Collection",
+      "dictionaryBaseType": "System.Collections.Generic.Dictionary",
+      "classStyle": "Poco",
+      "generateDefaultValues": true,
+      "generateDataAnnotations": true,
+      "excludedTypeNames": [
+        "ProblemDetails"
+      ],
+      "excludedParameterNames": [],
+      "handleReferences": false,
+      "generateImmutableArrayProperties": true,
+      "generateImmutableDictionaryProperties": true,
+      "jsonSerializerSettingsTransformationMethod": null,
+      "inlineNamedDictionaries": false,
+      "inlineNamedTuples": true,
+      "templateDirectory": null,
+      "typeNameGeneratorType": null,
+      "propertyNameGeneratorType": null,
+      "enumNameGeneratorType": null,
+      "serviceHost": null,
+      "serviceSchemes": null,
+      "output": "Generated/schema.cs"
+    }
+  }
+}

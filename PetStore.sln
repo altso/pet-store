@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetStore.DataAccess", "PetS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetStore.CodeFirst", "PetStore.CodeFirst\PetStore.CodeFirst.csproj", "{CA701508-0F79-4E30-80E6-D52DA1B21EDC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetStore.SchemaFirst", "PetStore.SchemaFirst\PetStore.SchemaFirst.csproj", "{297D2EAC-C56D-462E-949B-25B65DA877C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{CA701508-0F79-4E30-80E6-D52DA1B21EDC}.Release|x64.Build.0 = Release|Any CPU
 		{CA701508-0F79-4E30-80E6-D52DA1B21EDC}.Release|x86.ActiveCfg = Release|Any CPU
 		{CA701508-0F79-4E30-80E6-D52DA1B21EDC}.Release|x86.Build.0 = Release|Any CPU
+		{297D2EAC-C56D-462E-949B-25B65DA877C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{297D2EAC-C56D-462E-949B-25B65DA877C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{297D2EAC-C56D-462E-949B-25B65DA877C8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{297D2EAC-C56D-462E-949B-25B65DA877C8}.Debug|x64.Build.0 = Debug|Any CPU
+		{297D2EAC-C56D-462E-949B-25B65DA877C8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{297D2EAC-C56D-462E-949B-25B65DA877C8}.Debug|x86.Build.0 = Debug|Any CPU
+		{297D2EAC-C56D-462E-949B-25B65DA877C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{297D2EAC-C56D-462E-949B-25B65DA877C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{297D2EAC-C56D-462E-949B-25B65DA877C8}.Release|x64.ActiveCfg = Release|Any CPU
+		{297D2EAC-C56D-462E-949B-25B65DA877C8}.Release|x64.Build.0 = Release|Any CPU
+		{297D2EAC-C56D-462E-949B-25B65DA877C8}.Release|x86.ActiveCfg = Release|Any CPU
+		{297D2EAC-C56D-462E-949B-25B65DA877C8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
