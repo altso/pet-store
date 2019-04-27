@@ -67,7 +67,7 @@ namespace PetStore.SchemaFirst
 
             app.UseSwaggerUi3(settings =>
             {
-                settings.DocumentPath = "/Schema/schema.yaml"; 
+                settings.DocumentPath = "/Schema/schema.yaml";
             });
 
             app.UseMvc(routes =>
