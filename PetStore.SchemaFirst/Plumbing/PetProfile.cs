@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using PetStore.Core;
 using PetStore.SchemaFirst.Generated;
 
 namespace PetStore.SchemaFirst.Plumbing
@@ -8,9 +7,9 @@ namespace PetStore.SchemaFirst.Plumbing
     {
         public PetProfile()
         {
-            CreateMap<Pet, PetViewModel>().ReverseMap();
-            //CreateMap<Cat, CatViewModel>().IncludeBase<Pet, PetViewModel>().ReverseMap();
-            //CreateMap<Dog, DogViewModel>().IncludeBase<Pet, PetViewModel>().ReverseMap();
+            CreateMap<Core.Pet, Pet>().ReverseMap();
+            CreateMap<Core.Cat, Cat>().IncludeBase<Core.Pet, Pet>().ReverseMap();
+            CreateMap<Core.Dog, Dog>().IncludeBase<Core.Pet, Pet>().ReverseMap();
         }
     }
 }

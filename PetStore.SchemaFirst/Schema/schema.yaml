@@ -19,7 +19,7 @@ paths:
             uniqueItems: false
             type: array
             items:
-              $ref: '#/definitions/PetViewModel'
+              $ref: '#/definitions/Pet'
         default:
           description: Default Error Response
           schema:
@@ -39,12 +39,12 @@ paths:
           description: The pet.
           required: false
           schema:
-            $ref: '#/definitions/PetViewModel'
+            $ref: '#/definitions/Pet'
       responses:
         '201':
           description: Success
           schema:
-            $ref: '#/definitions/PetViewModel'
+            $ref: '#/definitions/Pet'
         '400':
           description: Bad Request
           schema:
@@ -73,7 +73,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/PetViewModel'
+            $ref: '#/definitions/Pet'
         '404':
           description: Not Found
           schema:
@@ -103,7 +103,7 @@ paths:
           description: The pet.
           required: false
           schema:
-            $ref: '#/definitions/PetViewModel'
+            $ref: '#/definitions/Pet'
       responses:
         '204':
           description: Success
@@ -138,7 +138,7 @@ paths:
         '200':
           description: Success
           schema:
-            $ref: '#/definitions/PetViewModel'
+            $ref: '#/definitions/Pet'
         '400':
           description: Bad Request
           schema:
@@ -152,9 +152,10 @@ paths:
           schema:
             $ref: '#/definitions/ProblemDetails'
 definitions:
-  PetViewModel:
+  Pet:
     required:
       - name
+      - petType
     type: object
     properties:
       id:
@@ -176,6 +177,28 @@ definitions:
         type: string
       petType:
         type: string
+    discriminator: petType
+  Cat:
+    description: A representation of a cat
+    allOf:
+    - $ref: '#/definitions/Pet'
+    - type: object
+      properties:
+        whiskersLength:
+          type: number
+          description: The measured skill for hunting
+  Dog:
+    description: A representation of a dog
+    allOf:
+    - $ref: '#/definitions/Pet'
+    - type: object
+      properties:
+        packSize:
+          type: integer
+          format: int32
+          description: the size of the pack the dog is from
+          default: 0
+          minimum: 0
   ProblemDetails:
     type: object
     properties:

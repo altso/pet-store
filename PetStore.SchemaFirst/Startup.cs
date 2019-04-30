@@ -1,4 +1,5 @@
 using System.IO;
+using System.Reflection;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -25,7 +26,8 @@ namespace PetStore.SchemaFirst
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(o => o.EnableEndpointRouting = false)
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -33,7 +35,7 @@ namespace PetStore.SchemaFirst
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            services.AddAutoMapper(config => config.CreateMissingTypeMaps = false);
+            services.AddAutoMapper(config => config.CreateMissingTypeMaps = false, Assembly.GetExecutingAssembly());
             services.AddDbContextPool<PetStoreDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("PetStore"));

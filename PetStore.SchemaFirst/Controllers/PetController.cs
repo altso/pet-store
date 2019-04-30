@@ -3,7 +3,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using PetStore.Core;
 using PetStore.DataAccess;
 using PetStore.SchemaFirst.Generated;
 
@@ -20,32 +19,32 @@ namespace PetStore.SchemaFirst.Controllers
             _mapper = mapper;
         }
 
-        public override async Task<ActionResult<ICollection<PetViewModel>>> GetPets(CancellationToken cancellationToken)
+        public override async Task<ActionResult<ICollection<Pet>>> GetPets(CancellationToken cancellationToken)
         {
             var pets = await _petRepository.GetPets();
-            return _mapper.Map<List<PetViewModel>>(pets);
+            return _mapper.Map<List<Pet>>(pets);
         }
 
-        public override async Task<ActionResult<PetViewModel>> GetPet(int id, CancellationToken cancellationToken)
+        public override async Task<ActionResult<Pet>> GetPet(int id, CancellationToken cancellationToken)
         {
-            Pet pet = await _petRepository.GetPet(id);
+            var pet = await _petRepository.GetPet(id);
 
             if (pet == null)
             {
                 return NotFound();
             }
 
-            return _mapper.Map<PetViewModel>(pet);
+            return _mapper.Map<Pet>(pet);
         }
 
-        public override async Task<IActionResult> PutPet(int id, PetViewModel pet, CancellationToken cancellationToken)
+        public override async Task<IActionResult> PutPet(int id, Pet pet, CancellationToken cancellationToken)
         {
             if (id != pet.Id)
             {
                 return BadRequest();
             }
 
-            Pet updatedPet = await _petRepository.UpdatePet(_mapper.Map<Pet>(pet));
+            Core.Pet updatedPet = await _petRepository.UpdatePet(_mapper.Map<Core.Pet>(pet));
 
             if (updatedPet == null)
             {
@@ -55,21 +54,21 @@ namespace PetStore.SchemaFirst.Controllers
             return NoContent();
         }
 
-        public override async Task<ActionResult<PetViewModel>> PostPet(PetViewModel pet, CancellationToken cancellationToken)
+        public override async Task<ActionResult<Pet>> PostPet(Pet pet, CancellationToken cancellationToken)
         {
-            Pet createdPet = await _petRepository.CreatePet(_mapper.Map<Pet>(pet));
-            return CreatedAtAction("GetPet", new { id = pet.Id }, _mapper.Map<PetViewModel>(createdPet));
+            Core.Pet createdPet = await _petRepository.CreatePet(_mapper.Map<Core.Pet>(pet));
+            return CreatedAtAction("GetPet", new { id = pet.Id }, _mapper.Map<Pet>(createdPet));
         }
 
-        public override async Task<ActionResult<PetViewModel>> DeletePet(int id, CancellationToken cancellationToken)
+        public override async Task<ActionResult<Pet>> DeletePet(int id, CancellationToken cancellationToken)
         {
-            Pet pet = await _petRepository.DeletePet(id);
+            Core.Pet pet = await _petRepository.DeletePet(id);
             if (pet == null)
             {
                 return NotFound();
             }
 
-            return _mapper.Map<PetViewModel>(pet);
+            return _mapper.Map<Pet>(pet);
         }
     }
 }

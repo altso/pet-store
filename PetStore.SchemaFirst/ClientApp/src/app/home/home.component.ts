@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PetClient, PetViewModel } from 'src/api/generated';
+import { PetClient, Pet } from 'src/api/generated';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -12,5 +12,5 @@ export class HomeComponent {
     this.pets$ = petService.getPets();
   }
 
-  public pets$: Observable<PetViewModel[]>;
+  public pets$: Observable<Pet[]>;
 }
