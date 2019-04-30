@@ -39,10 +39,12 @@ namespace PetStore.CodeFirst
                         new PolymorphicDeserializeJsonConverter<PetViewModel>("petType"));
                 });
 
-            // In production, the Angular files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
+            services.AddCors(options =>
             {
-                configuration.RootPath = "ClientApp/dist";
+                options.AddPolicy("Demo", b => b
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin());
             });
 
             services.AddAutoMapper(config => config.CreateMissingTypeMaps = false, Assembly.GetExecutingAssembly());
@@ -78,9 +80,10 @@ namespace PetStore.CodeFirst
                 app.UseHsts();
             }
 
+            app.UseCors("Demo");
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
 
             app.UseSwagger();
 
@@ -89,26 +92,7 @@ namespace PetStore.CodeFirst
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Pet Store API v1");
             });
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
-            });
-
-            app.UseSpa(spa =>
-            {
-                // To learn more about options for serving an Angular SPA from ASP.NET Core,
-                // see https://go.microsoft.com/fwlink/?linkid=864501
-
-                spa.Options.SourcePath = "ClientApp";
-
-                if (env.IsDevelopment())
-                {
-                    //spa.UseAngularCliServer(npmScript: "start");
-                    spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
-                }
-            });
+            app.UseMvc();
         }
     }
 }

@@ -41,3 +41,4 @@ Thumbs.db
 
 # code gen
 src/api/generated
+swagger.json
