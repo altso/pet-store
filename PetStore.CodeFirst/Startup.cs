@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Rest.Serialization;
 using Newtonsoft.Json.Converters;
 using PetStore.CodeFirst.Models;
+using PetStore.CodeFirst.Plumbing;
 using PetStore.DataAccess;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -44,13 +45,14 @@ namespace PetStore.CodeFirst
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            services.AddAutoMapper(config => config.CreateMissingTypeMaps = false);
+            services.AddAutoMapper(config => config.CreateMissingTypeMaps = false, Assembly.GetExecutingAssembly());
 
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "Pet Store API", Version = "v1" });
                 c.DescribeAllEnumsAsStrings();
                 c.IncludeXmlComments(Path.ChangeExtension(Assembly.GetExecutingAssembly().CodeBase, ".xml"));
+                c.OperationFilter<XCorrelationIdFilter>();
                 //c.EnableAnnotations();
                 //c.GeneratePolymorphicSchemas();
             });
