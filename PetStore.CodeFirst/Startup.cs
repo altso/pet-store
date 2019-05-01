@@ -55,8 +55,6 @@ namespace PetStore.CodeFirst
                 c.DescribeAllEnumsAsStrings();
                 c.IncludeXmlComments(Path.ChangeExtension(Assembly.GetExecutingAssembly().CodeBase, ".xml"));
                 c.OperationFilter<XCorrelationIdFilter>();
-                //c.EnableAnnotations();
-                //c.GeneratePolymorphicSchemas();
             });
 
             services.AddDbContextPool<PetStoreDbContext>(options =>
