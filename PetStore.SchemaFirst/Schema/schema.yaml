@@ -179,6 +179,13 @@ definitions:
       petType:
         type: string
     discriminator: petType
+    example:
+      name: 'Sample Cat'
+      status: 'Available'
+      dateOfBirth: '2019-01-01'
+      registrationTimestamp: '2019-02-03T01:02:03Z'
+      petType: 'Cat'
+      whiskersLength: 12
   Cat:
     description: A representation of a cat
     allOf:
