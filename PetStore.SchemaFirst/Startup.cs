@@ -67,9 +67,16 @@ namespace PetStore.SchemaFirst
             });
             app.UseSpaStaticFiles();
 
-            app.UseSwaggerUi3(settings =>
+            app.UseSwaggerUi3(options =>
             {
-                settings.DocumentPath = "/Schema/schema.yaml";
+                options.Path = "/swagger";
+                options.DocumentPath = "/Schema/schema.yaml";
+            });
+
+            app.UseReDoc(options =>
+            {
+                options.Path = "/redoc";
+                options.DocumentPath = "/Schema/schema.yaml"; 
             });
 
             app.UseMvc(routes =>

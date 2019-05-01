@@ -163,6 +163,7 @@ definitions:
         type: integer
       name:
         type: string
+        description: The name of the pet.
       status:
         enum:
           - Available
@@ -186,7 +187,8 @@ definitions:
       properties:
         whiskersLength:
           type: number
-          description: The measured skill for hunting
+          minimum: 0
+          description: The length of the whiskers
   Dog:
     description: A representation of a dog
     allOf:
